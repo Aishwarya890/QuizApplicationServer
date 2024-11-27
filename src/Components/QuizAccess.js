@@ -14,7 +14,7 @@ const QuizAccess = ({ quizId,  startQuiz }) => {
         return;
     }
         try {
-            const response = await axios.post('http://localhost:8080/api/user/verify-quiz-access', null, {
+            const response = await axios.post('https://quizapplicationbackend-production.up.railway.app/api/user/verify-quiz-access', null, {
                 params: {
                     quizId,
                     accessCode,

@@ -107,7 +107,7 @@ function AdminApprovalPage() {
     const fetchRequests = async () => {
       setLoadingPending(true); // Set loading to true while fetching pending requests
       try {
-        const response = await axios.get('http://localhost:8080/admin/requests/pending');
+        const response = await axios.get('https://quizapplicationbackend-production.up.railway.app/admin/requests/pending');
         setPendingRequests(response.data);
       } catch (error) {
         console.error("Error fetching pending requests:", error);
@@ -119,7 +119,7 @@ function AdminApprovalPage() {
     const fetchRequestHistory = async () => {
       setLoadingHistory(true); // Set loading to true while fetching request history
       try {
-        const response = await axios.get('http://localhost:8080/admin/requests/history');
+        const response = await axios.get('https://quizapplicationbackend-production.up.railway.app/admin/requests/history');
         setRequestHistory(response.data);
       } catch (error) {
         console.error("Error fetching request history:", error);
@@ -136,7 +136,7 @@ function AdminApprovalPage() {
   axios.defaults.withCredentials = true;
   const approveRequest = async (id) => {
     try {
-      await axios.post(`http://localhost:8080/admin/requests/approve/${id}`);
+      await axios.post(`https://quizapplicationbackend-production.up.railway.app/admin/requests/approve/${id}`);
       setPendingRequests(pendingRequests.filter(request => request.id !== id)); // Remove the approved request from the list
       alert("Request approved!");
     } catch (error) {
@@ -147,7 +147,7 @@ function AdminApprovalPage() {
   // Reject a request
   const rejectRequest = async (id) => {
     try {
-      await axios.post(`http://localhost:8080/admin/requests/reject/${id}`);
+      await axios.post(`https://quizapplicationbackend-production.up.railway.app/admin/requests/reject/${id}`);
       setPendingRequests(pendingRequests.filter(request => request.id !== id)); // Remove the rejected request from the list
       alert("Request rejected!");
     } catch (error) {

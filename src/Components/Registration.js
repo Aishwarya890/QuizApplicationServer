@@ -144,7 +144,7 @@ function Registration() {
 
     try {
       // Register the user
-      const response = await axios.post('http://localhost:8080/auth/register', {
+      const response = await axios.post('https://quizapplicationbackend-production.up.railway.app/auth/register', {
         username,
         email,
         password,
@@ -162,7 +162,7 @@ function Registration() {
             status: RequestStatus.PENDING, // Assuming RequestStatus is an enum or similar structure
           };
 
-          const requestResponse = await axios.get('http://localhost:8080/admin/requests/pending', adminRequest);
+          const requestResponse = await axios.get('https://quizapplicationbackend-production.up.railway.app/admin/requests/pending', adminRequest);
           if (requestResponse.status === 200) {
             alert('Registration successful. Please wait for Admin approval.');
           } else {

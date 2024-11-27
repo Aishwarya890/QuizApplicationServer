@@ -20,7 +20,7 @@ const TakeQuiz = () => {
     useEffect(() => {
         const fetchQuiz = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/api/admin/quizzes/${quizId}`, {
+                const response = await axios.get(`https://quizapplicationbackend-production.up.railway.app/api/admin/quizzes/${quizId}`, {
                     withCredentials: true
                 });
                 setQuiz(response.data);
@@ -82,7 +82,7 @@ const TakeQuiz = () => {
                 throw new Error('User not logged in. Please log in to submit the quiz.');
             }
 
-            const response = await axios.post(`http://localhost:8080/quizzes/submit`, {
+            const response = await axios.post(`https://quizapplicationbackend-production.up.railway.app/quizzes/submit`, {
                 quizId,
                 userId: userId1,
                 answers,
@@ -95,7 +95,7 @@ const TakeQuiz = () => {
             const calculatedScore = calculateScore();
 
             // Save the score to the backend
-            await axios.post(`http://localhost:8080/api/scores`, {
+            await axios.post(`https://quizapplicationbackend-production.up.railway.app/api/scores`, {
                 userId: userId1,
                 quizId,
                 score: calculatedScore,

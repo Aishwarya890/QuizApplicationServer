@@ -22,7 +22,7 @@ const AdminPanel = () => {
         const fetchQuizzes = async () => {
             setLoading(true);
             try {
-                const response = await axios.get('http://localhost:8080/api/admin/quizzes');
+                const response = await axios.get('https://quizapplicationbackend-production.up.railway.app/api/admin/quizzes');
                 setQuizzes(response.data);
             } catch (error) {
                 alert('Error fetching quizzes: ' + error.message);
@@ -71,7 +71,7 @@ const AdminPanel = () => {
     const handleDeleteQuiz = async (quizId) => {
         if (window.confirm('Are you sure you want to delete this quiz?')) {
             try {
-                await axios.delete(`http://localhost:8080/api/admin/quizzes/${quizId}`);
+                await axios.delete(`https://quizapplicationbackend-production.up.railway.app/api/admin/quizzes/${quizId}`);
                 setQuizzes(quizzes.filter((quiz) => quiz.id !== quizId));
                 alert('Quiz deleted successfully!');
             } catch (error) {
@@ -131,10 +131,10 @@ const AdminPanel = () => {
             };
 
             if (selectedQuizId) {
-                await axios.put(`http://localhost:8080/api/admin/quizzes/${selectedQuizId}`, quiz);
+                await axios.put(`https://quizapplicationbackend-production.up.railway.app/api/admin/quizzes/${selectedQuizId}`, quiz);
                 alert('Quiz updated successfully!');
             } else {
-                await axios.post('http://localhost:8080/api/admin/quizzes', quiz);
+                await axios.post('https://quizapplicationbackend-production.up.railway.app/api/admin/quizzes', quiz);
                 alert('Quiz created successfully!');
             }
 
@@ -177,7 +177,7 @@ const AdminPanel = () => {
     
         try {
             console.log(`Requesting user details for subject: ${subject}`);
-            const response = await axios.get(`http://localhost:8080/api/admin/quizzes/user-scores/${subject}`);
+            const response = await axios.get(`https://quizapplicationbackend-production.up.railway.app/api/admin/quizzes/user-scores/${subject}`);
             console.log("Fetched user details:", response.data);
             setUserDetails(response.data);
         } catch (error) {

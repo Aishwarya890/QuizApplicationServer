@@ -110,7 +110,7 @@ const QuizList = () => {
     useEffect(() => {
         const fetchQuizzes = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/api/admin/quizzes');
+                const response = await axios.get('https://quizapplicationbackend-production.up.railway.app/api/admin/quizzes');
                 setQuizzes(response.data);
             } catch (error) {
                 console.error('Error fetching quizzes:', error);
@@ -137,7 +137,7 @@ const QuizList = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:8080/api/user/verify-quiz-access', {
+            const response = await axios.post('https://quizapplicationbackend-production.up.railway.app/api/user/verify-quiz-access', {
                 quizId,
                 accessCode: enteredAccessCode,
                 userId
@@ -166,7 +166,7 @@ const QuizList = () => {
         }
 
         try {
-            const response = await axios.get(`http://localhost:8080/api/user/user-history?userId=${userId}`);
+            const response = await axios.get(`https://quizapplicationbackend-production.up.railway.app/api/user/user-history?userId=${userId}`);
             setUserHistory(response.data);
             setShowHistory(true); // Show the user history modal or section
             console.log("data",response.data)
